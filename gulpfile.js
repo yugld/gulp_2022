@@ -11,6 +11,7 @@ global.app = {
 
 //import tasks
 import { copy } from "./gulp/tasks/copy.js";
+import { reset } from "./gulp/tasks/reset.js";
 
 //Watcher for changing in files
 function watcher() {
@@ -18,7 +19,7 @@ function watcher() {
 };
 
 //building a task execution script
-const dev = gulp.series(copy, watcher);
+const dev = gulp.series(reset, copy, watcher);
 
 //default script execution
 gulp.task('default', dev);
