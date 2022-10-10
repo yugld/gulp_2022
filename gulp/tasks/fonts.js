@@ -81,8 +81,7 @@ export const fontStyle = () => {
             }
 
             fs.appendFile(fontsFile,
-              `
-              @font-face {
+              `@font-face {
                 font-family: ${fontName};
                 font-display: swap;
                 src: url("../fonts/${fontFileName}.woff2") format("woff2"), url("../fonts/${fontFileName}.woff") format("woff");

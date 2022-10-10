@@ -21,8 +21,8 @@ import { scss } from "./gulp/tasks/scss.js";
 import { js } from "./gulp/tasks/js.js";
 import { images } from "./gulp/tasks/images.js";
 import { otfToTtf, ttfToWoff, fontStyle } from './gulp/tasks/fonts.js';
-/*import { svgSprive } from './gulp/tasks/svgSprive.js';
-import { zip } from './gulp/tasks/zip.js';
+import { svgSprive } from './gulp/tasks/svgSprive.js';
+/*import { zip } from './gulp/tasks/zip.js';
 import { ftp } from './gulp/tasks/ftp.js'*/
 
 //Watcher for changing in files
@@ -33,6 +33,8 @@ function watcher() {
     gulp.watch(path.watch.js, js);
     gulp.watch(path.watch.images, images);
 };
+
+export { svgSprive };
 
 // Последовательная обработка шрифтов
 const fonts = gulp.series(otfToTtf, ttfToWoff, fontStyle);
