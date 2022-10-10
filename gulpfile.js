@@ -20,6 +20,10 @@ import { server } from "./gulp/tasks/server.js";
 import { scss } from "./gulp/tasks/scss.js";
 import { js } from "./gulp/tasks/js.js";
 import { images } from "./gulp/tasks/images.js";
+import { otfToTtf, ttfToWoff, fontStyle } from './gulp/tasks/fonts.js';
+/*import { svgSprive } from './gulp/tasks/svgSprive.js';
+import { zip } from './gulp/tasks/zip.js';
+import { ftp } from './gulp/tasks/ftp.js'*/
 
 //Watcher for changing in files
 function watcher() {
@@ -30,8 +34,11 @@ function watcher() {
     gulp.watch(path.watch.images, images);
 };
 
+// Последовательная обработка шрифтов
+const fonts = gulp.series(otfToTtf, ttfToWoff, fontStyle);
+
 //Main tasks
-const mainTasks = gulp.parallel(copy, html, scss, js, images);
+const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, js, images))
 
 
 //building a task execution script
